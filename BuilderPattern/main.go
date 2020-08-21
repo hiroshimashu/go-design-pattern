@@ -12,10 +12,8 @@ type Dealer struct {
 	VehicleBuilder VehicleBuilder
 }
 
-func (d *Dealer) construct(color, vehicleType string, numOfWheel int) {
-	d.VehicleBuilder.setColor(color)
-	d.VehicleBuilder.setType(vehicleType)
-	d.VehicleBuilder.setNumOfWheel(numOfWheel)
+func (d *Dealer) construct(parameters interface{}) {
+	d.VehicleBuilder.Build(parameters)
 }
 
 func NewDealer(vb VehicleBuilder) *Dealer {
@@ -30,9 +28,7 @@ func NewDealer(vb VehicleBuilder) *Dealer {
  */
 
 type VehicleBuilder interface {
-	setColor(color string)
-	setType(vehicleType string)
-	setNumOfWheel(numOfWheel int)
+	Build(parameters interface{})
 }
 
 /*
@@ -65,6 +61,10 @@ func (cb CarBuilder) setNumOfWheel(numOfWheel int) {
 	cb.Car.numOfWheel = numOfWheel
 }
 
+func (cb CarBuilder) Build(parameters interface{}) {
+
+}
+
 func (cb CarBuilder) getResult() *Car {
 	return cb.Car
 }
@@ -75,6 +75,19 @@ func NewCarBuilder() CarBuilder {
 		Car: nc,
 	}
 	return cb
+}
+
+type AirPlane struct {
+	color       string
+	vehicleType string
+	numOfWheel  int
+	brand       string
+}
+
+func NewAirPlan() *AirPlane {
+	return &AirPlane{
+		brand: "boeing",
+	}
 }
 
 func main() {
