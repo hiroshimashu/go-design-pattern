@@ -1,9 +1,5 @@
 package main
 
-import (
-	"fmt"
-)
-
 /*
 * Director
  */
@@ -91,9 +87,5 @@ func NewAirPlan() *AirPlane {
 }
 
 func main() {
-	carBuilder := NewCarBuilder()
-	dealer := NewDealer(carBuilder)
-	dealer.construct("silver", "sportsCar", 4)
-	car := carBuilder.getResult()
-	fmt.Print(*car)
+
 }
