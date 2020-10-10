@@ -18,3 +18,10 @@ func (k Kind) String() string {
 		return "free"
 	}
 }
+
+type User struct {
+	Kind   Kind
+	Name   string
+	Age    int
+	Gender string
+}
